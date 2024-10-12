@@ -32,7 +32,7 @@ jobs:
         run: |
           cd terraform 
           terraform init 
-          terraform plan -out
+          terraform plan 
       - name: run terraform validate
         run: terraform validate
       - name: run terraform apply
