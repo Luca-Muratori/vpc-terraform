@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'terraform/**'
-      - '.github/**'
+      - '**'
+   
 permissions:
   pull-requests: write
   contents: read
