@@ -30,17 +30,11 @@ jobs:
           terraform_wrapper: false
       - name: run terraform init & plan
         run: |
-          ls -l 
-          cd terraform 
-          pwd
-          ls -l
-          cat main.tf
+          cd terraform
           terraform init 
           terraform plan 
-          
       - name: run terraform validate
         run: |
           terraform validate
-          ls -l
       - name: run terraform apply
         run: terraform apply -auto-approve
