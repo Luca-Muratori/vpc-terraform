@@ -12,7 +12,7 @@ permissions:
 
 jobs:
 
-  create-vpc:
+  create-vpc-with-tf:
     runs-on: ubuntu-latest
     steps: 
       - name : set up github
