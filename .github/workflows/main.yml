@@ -2,8 +2,7 @@ name: Create tier three infrastructure
 
 on:
   pull_request:
-    branches:
-      - 'main'
+    branches: [main]
     paths:
       - terraform/**
 permissions:
