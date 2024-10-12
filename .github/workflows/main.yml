@@ -30,6 +30,7 @@ jobs:
       - name: run terraform init & plan
         run: |
           cd terraform
+          cd terraform
           terraform init 
           terraform plan 
       - name: run terraform validate
@@ -37,8 +38,4 @@ jobs:
           terraform validate
       - name: run terraform apply
         run: |
-          pwd
-          ls
-          cd terraform
-          terraform init
           terraform apply -auto-approve
