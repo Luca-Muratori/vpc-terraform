@@ -3,7 +3,7 @@ name: Create tier three infrastructure
 on:
   push:
     branches: 
-      - main
+      - 'main'
     paths:
       - terraform/**
 permissions:
