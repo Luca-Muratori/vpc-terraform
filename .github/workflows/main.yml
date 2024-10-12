@@ -30,8 +30,8 @@ jobs:
           terraform_wrapper: false
       - name: run terraform init & plan
         run: |
+          ls -l 
           cd terraform 
-          ls -l
           terraform init 
           terraform plan 
           
