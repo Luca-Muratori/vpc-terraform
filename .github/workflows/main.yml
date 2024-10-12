@@ -2,8 +2,7 @@ name: Create tier three infrastructure
 
 on:
   push:
-    branches: 
-      - 'main'
+    branches: [main]
     paths:
       - 'vpc-terraform/**'
 permissions:
@@ -11,7 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  
+
   create-vpc:
     runs-on: ubuntu-latest
     steps: 
