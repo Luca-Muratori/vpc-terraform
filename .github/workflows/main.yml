@@ -34,6 +34,7 @@ jobs:
           cd terraform 
           pwd
           ls -l
+          cat main.tf
           terraform init 
           terraform plan 
           
