@@ -37,6 +37,7 @@ jobs:
       - name: run terraform validate
         run: |
           terraform validate
+          cd terraform
           ls -l
       - name: run terraform apply
         run: terraform apply -auto-approve
