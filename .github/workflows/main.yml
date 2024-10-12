@@ -33,8 +33,10 @@ jobs:
           cd terraform 
           terraform init 
           terraform plan 
-          ls -l
+          
       - name: run terraform validate
-        run: terraform validate
+        run: |
+          terraform validate
+          ls -l
       - name: run terraform apply
         run: terraform apply -auto-approve
