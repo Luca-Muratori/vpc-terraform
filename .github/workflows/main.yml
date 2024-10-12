@@ -37,4 +37,6 @@ jobs:
         run: |
           terraform validate
       - name: run terraform apply
-        run: terraform apply -auto-approve
+        run: |
+          pwd
+          terraform apply -auto-approve
