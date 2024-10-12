@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'vpc-terraform/**'
+      - vpc-terraform/**
 permissions:
   pull-requests: write
   contents: read
