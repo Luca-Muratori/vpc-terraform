@@ -1,0 +1,42 @@
+name: Create tier three infrastructure
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+    paths:
+      - terraform/**
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  create-vpc:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - name : set up aws credentials
+        uses : aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: $ {{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: $ {{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - name : set up terraform
+        uses : hashicorp/setup-terraform@v3
+        with :
+          terraform_version: latest
+          terraform_wrapper: false
+      - name: run terraform init & plan
+        run: terraform init & terraform plan
+      - name: run terraform validate
+        run: terraform validate
+      - name: run terraform apply
+        run: terraform apply
+        
+
+
+
+
+
+
+    
