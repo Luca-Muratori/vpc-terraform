@@ -27,15 +27,13 @@ jobs:
         with:
           terraform_version: latest
           terraform_wrapper: false
-      - name: run terraform init & plan
+      - name: navigate in the 'terraform' folder
         run: |
           cd terraform
-          cd terraform
-          terraform init 
-          terraform plan 
-      - name: run terraform validate
-        run: |
-          terraform validate
       - name: run terraform apply
         run: |
+          cd terraform
+          terraform init
+          terraform plan 
+          terraform validate
           terraform apply -auto-approve
