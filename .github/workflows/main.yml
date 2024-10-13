@@ -45,7 +45,7 @@ jobs:
       - name: Handle VPC existence
         run: |
           echo "check if vpc already exist"
-          aws ec2 describe-vpcs --filter Name=tag:Name,Values=qaqsq > vpc_response.txt
+          aws ec2 describe-vpcs --filter Name=tag:Name,Values=${{env.VPC_NAME}} > vpc_response.txt
           available=$(grep -c "available" vpc_response.txt)
           if [ $available -gt 0 ]; then
             echo "vpc already exist, stop the vpc creation"
