@@ -2,23 +2,23 @@
 
 
 variable "ami" {
-  type = string
+  type        = string
   description = "AMI ID for the EC2 instance"
-  default = "ami-0592c673f0b1e7665"
+  default     = "ami-0592c673f0b1e7665"
 }
 
 variable "type" {
-  type = string
+  type        = string
   description = "instance type for ec2 instances"
-  default = "t3.micro"
+  default     = "t3.micro"
 }
 
-variable "subnet"{
+variable "subnet" {
   type = list(object({
-      name=string,
-      cidr=string
+    name = string,
+    cidr = string
   }))
-  default = [ 
+  default = [
     {
       name = "Public1A",
       cidr = "10.0.0.1/24"
