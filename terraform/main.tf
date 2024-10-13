@@ -6,7 +6,6 @@ provider "aws" {
 //Point 2 'VPC Configuration'-----
 module "vpc" {
   source = "./modules/vpc"
-  
 }
 
 //-----------------------------------

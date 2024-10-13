@@ -46,7 +46,7 @@ jobs:
         id: init
         run: |
           aws s3 ls
-          terraform init -backend-config="bucket=s3://tf-state-myvpc-project-12332345"
+          terraform init -backend-config="bucket=s3://s3://tf-state-myvpc-project-12332345/global/s3/terraform.tfstate"
       - name: terraform format
         id: fmt
         run: terraform fmt -check
