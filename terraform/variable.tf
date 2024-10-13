@@ -10,7 +10,7 @@ variable "ami" {
 variable "type" {
   type = string
   description = "instance type for ec2 instances"
-  default = "t2.micro"
+  default = "t3.micro"
 }
 
 variable "subnet"{
