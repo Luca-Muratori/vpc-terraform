@@ -18,6 +18,7 @@ permissions:
 env:
   TF_LOG: INFO
   BUCKET_TF_STATE: ${{secrets.BUCKET_TF_STATE}}
+  VPC_NAME: tf-vpc-project
 
 jobs:
   create-vpc-with-tf:
@@ -26,6 +27,7 @@ jobs:
       run: 
         shell:  bash
         working-directory: ./terraform
+        
     steps:
       - name: set up github
         uses: actions/checkout@v3
@@ -40,7 +42,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
-      
+      - name: Handle VPC existence
+        run: |
+          echo "check if vpc already exist"
+          aws ec2 describe-vpcs --filter Name=tag:Name,Values=my-vpc > vpc_response.txt
+          grep -i "available" vpc_response.txt 
+          echo "vpc already exist, stop the vpc creation"
+          exit 1
       - name: terraform init
         id: init
         run: |
