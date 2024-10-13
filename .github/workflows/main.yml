@@ -66,7 +66,10 @@ jobs:
             exit 1
           else
             echo "VPC 'tf-vpc-project' does not exist. Continuing with creation."
+            echo "Debug: Script reached the end of the else block without exiting."
           fi
+          echo "Debug: Script reached the end without explicit exit."
+          exit 0
       - name: terraform init
         id: init
         run: |
