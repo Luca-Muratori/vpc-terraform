@@ -45,7 +45,7 @@ jobs:
         id: init
         run: |
           aws s3 ls
-          terraform init -backend-config="bucket=${{ env.BUCKET_TF_STATE }}"
+          terraform init
       - name: terraform format
         id: fmt
         run: terraform fmt -check
