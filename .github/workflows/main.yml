@@ -17,8 +17,7 @@ permissions:
 
 env:
   TF_LOG: INFO
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  BUCKET_TF_STATE: ${{secrets.BUCKET_TF_STATE}}
 
 jobs:
   create-vpc-with-tf:
@@ -38,15 +37,15 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
       
       - name: terraform init
         id: init
         run: |
           aws s3 ls
-          terraform init -backend-config="bucket=tf-state-myvpc-project-12332345/global/s3/terraform.tfstate"
+          terraform init -backend-config="bucket=${{ env.BUCKET_TF_STATE }}"
       - name: terraform format
         id: fmt
         run: terraform fmt -check
