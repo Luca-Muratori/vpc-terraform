@@ -43,37 +43,25 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
       - name: Handle VPC existence
+        id: check-vpc
         run: |
-          aws_output=$(aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project 2>&1)
-          echo "AWS CLI full output: $aws_output"
-          aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project
-          aws_exit_code=$?
-          echo "AWS CLI exit code: $aws_exit_code"
-          aws sts get-caller-identity
-          aws_identity_exit_code=$?
-          echo "AWS identity check exit code: $aws_identity_exit_code"
-          echo "Test available" | grep -c "available"
-          grep_exit_code=$?
-          echo "Grep test exit code: $grep_exit_code"
-          vpc_describe_output=$(aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project)
-          echo "VPC describe output: $vpc_describe_output"
-          grep_output=$(echo "$vpc_describe_output" | grep -c "available")
-          echo "Grep output: $grep_output"
-          available=$grep_output
-          echo "Final available value: $available"
-          if [[ $available -gt 0 ]]; then
-            echo "VPC 'tf-vpc-project' already exists. Skipping creation."
-            exit 1
+          vpc_exists=$(aws ec2 describe-vpcs --filters "Name=tag:Name,Values=tf-vpc-project" --query 'Vpcs[*]' --output text)
+          if [ -n "$vpc_exists" ]; then
+            echo "VPC 'tf-vpc-project' already exists."
+            echo "vpc_exists=true" >> $GITHUB_OUTPUT
           else
-            echo "VPC 'tf-vpc-project' does not exist. Continuing with creation."
-            echo "Debug: Script reached the end of the else block without exiting."
+            echo "VPC 'tf-vpc-project' does not exist."
+            echo "vpc_exists=false" >> $GITHUB_OUTPUT
           fi
-          echo "Debug: Script reached the end without explicit exit."
-          exit 0
+      - name: VPC already exists
+        if: steps.check-vpc.outputs.vpc_exists == 'true'
+        run: |
+          echo "VPC 'tf-vpc-project' already exists. Skipping creation."
+          exit code 1
       - name: terraform init
         id: init
+        if: steps.check-vpc.outputs.vpc_exists == 'false'
         run: |
-          aws s3 ls
           terraform init
       - name: terraform format
         id: fmt
