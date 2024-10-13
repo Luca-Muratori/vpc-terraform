@@ -44,7 +44,9 @@ jobs:
           aws-region: eu-central-1
       - name: Handle VPC existence
         run: |
+         
           available=$(aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project | grep -c "available")
+          echo 'available: $available'
           if [[ $available -gt 0 ]]; then
             echo "VPC 'tf-vpc-project' already exists. Skipping creation."
             exit 1
