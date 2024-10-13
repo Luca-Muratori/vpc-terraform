@@ -44,11 +44,12 @@ jobs:
           aws-region: eu-central-1
       - name: Handle VPC existence
         run: |
-          aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project > vpc_response.txt
-          available=$(grep -c "available" vpc_response.txt)
+          available=$(aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project | grep -c "available")
           if [[ $available -gt 0 ]]; then
             echo "VPC 'tf-vpc-project' already exists. Skipping creation."
             exit 1
+          else
+            echo "VPC 'tf-vpc-project' does not exist. Continuing with creation."
           fi
       - name: terraform init
         id: init
