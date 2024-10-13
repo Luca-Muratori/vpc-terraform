@@ -106,3 +106,6 @@ DONE:
 -created a tf state file, in order to store the configuration on a remote backend S3
 -create modules in order to have each service in a separate subdirectory
 -done point 2 'VPC Configuration'
+-make that if the github action to create the vpc is launched, now thanks to an if statement
+    it won't rerun again all the jobs for the creations, make it less resources demanding and fast
+
