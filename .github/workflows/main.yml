@@ -44,9 +44,23 @@ jobs:
           aws-region: eu-central-1
       - name: Handle VPC existence
         run: |
-         
-          available=$(aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project | grep -c "available")
-          echo 'available: $available'
+          aws_output=$(aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project 2>&1)
+          echo "AWS CLI full output: $aws_output"
+          aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project
+          aws_exit_code=$?
+          echo "AWS CLI exit code: $aws_exit_code"
+          aws sts get-caller-identity
+          aws_identity_exit_code=$?
+          echo "AWS identity check exit code: $aws_identity_exit_code"
+          echo "Test available" | grep -c "available"
+          grep_exit_code=$?
+          echo "Grep test exit code: $grep_exit_code"
+          vpc_describe_output=$(aws ec2 describe-vpcs --filter Name=tag:Name,Values=tf-vpc-project)
+          echo "VPC describe output: $vpc_describe_output"
+          grep_output=$(echo "$vpc_describe_output" | grep -c "available")
+          echo "Grep output: $grep_output"
+          available=$grep_output
+          echo "Final available value: $available"
           if [[ $available -gt 0 ]]; then
             echo "VPC 'tf-vpc-project' already exists. Skipping creation."
             exit 1
