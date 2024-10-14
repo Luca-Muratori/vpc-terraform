@@ -9,29 +9,29 @@ data "aws_vpc" "tf-vpc-project" {
 resource "aws_subnet" "subnet1" {
   vpc_id                  = data.aws_vpc.tf-vpc-project.id
   cidr_block              = var.subnet_cidr[0].cidr
-  availability_zone       = "eu-central-1a"
-  map_public_ip_on_launch = true
+  availability_zone       = var.subnet_cidr[0].az
+  map_public_ip_on_launch = var.subnet_cidr[0].public_ip
   tags = {
-    Name = "subnet-1a"
+    Name = var.subnet_cidr[0].name
   }
 }
 
 resource "aws_subnet" "subnet2" {
   vpc_id                  = data.aws_vpc.tf-vpc-project.id
   cidr_block              = var.subnet_cidr[1].cidr
-  availability_zone       = "eu-central-1b"
-  map_public_ip_on_launch = false
+  availability_zone       = var.subnet_cidr[1].az
+  map_public_ip_on_launch = var.subnet_cidr[1].public_ip
   tags = {
-    Name = "subnet-1b"
+    Name = var.subnet_cidr[1].name
   }
 }
 
 resource "aws_subnet" "subnet3" {
   vpc_id                  = data.aws_vpc.tf-vpc-project.id
   cidr_block              = var.subnet_cidr[2].cidr
-  availability_zone       = "eu-central-1c"
-  map_public_ip_on_launch = true
+  availability_zone       = var.subnet_cidr[2].az
+  map_public_ip_on_launch = var.subnet_cidr[2].public_ip
   tags = {
-    Name = "subnet-1c"
+    Name = var.subnet_cidr[2].name
   }
 }

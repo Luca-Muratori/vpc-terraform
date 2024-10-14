@@ -8,7 +8,6 @@
    - Define the VPC resource
    - Specify CIDR block for the VPC
    - Enable DNS hostnames and DNS support
-//------------------------
 3. Availability Zones
    - Retrieve information about available AZs in the region
    - Select two AZs for the project
@@ -19,6 +18,7 @@
      - 2 private subnets 
    - Assign CIDR blocks to each subnet
    - Associate subnets with their respective AZs
+//------------------------
 
 5. Internet Gateway
    - Create an Internet Gateway
@@ -55,33 +55,6 @@
     - Generate an SSH key pair
     - Add the public key to AWS Key Pairs
 
-12. Outputs
-    - Define outputs for important resource information (e.g., public IP addresses)
-
-13. Variables
-    - Create a variables.tf file to define input variables
-    - Create a terraform.tfvars file for variable values
-
-14. Backend Configuration
-    - Set up an S3 backend for storing Terraform state
-    - Configure state locking using DynamoDB
-
-15. GitHub Actions Workflow
-    - Create a .github/workflows directory
-    - Define a YAML file for the GitHub Actions workflow
-    - Set up job steps:
-      - Checkout code
-      - Set up Terraform
-      - Initialize Terraform
-      - Validate Terraform configuration
-      - Plan Terraform changes
-      - Apply Terraform changes (on push to main branch)
-
-16. GitHub Secrets
-    - Add AWS credentials as GitHub secrets
-    - Add any other sensitive information as secrets
-
-
 17. Documentation
     - Create a README.md file
     - Document project structure, requirements, and usage instructions
@@ -110,4 +83,5 @@ DONE:
     it won't rerun again all the jobs for the creations, make it less resources demanding and fast
 -modularized the different services, now the vpc creation will be triggered only if there is no vpc
     in aws
+-
 
