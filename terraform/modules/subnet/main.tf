@@ -17,6 +17,7 @@ resource "aws_subnet" "subnet2" {
   tags = {
     Name = "subnet-1b"
   }
+  
 }
 
 resource "aws_subnet" "subnet3" {
