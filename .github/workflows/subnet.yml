@@ -4,7 +4,7 @@ on:
     push:
         branches: [main]
         paths:
-            - "./terraform/modules/subnet/**"
+            - "terraform/modules/subnet/**"
 
 permissions:
     pull-requests: write
