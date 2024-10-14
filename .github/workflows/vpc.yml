@@ -17,8 +17,6 @@ permissions:
 
 env:
   TF_LOG: INFO
-  BUCKET_TF_STATE: ${{secrets.BUCKET_TF_STATE}}
-  VPC_NAME: tf-vpc-project
 
 jobs:
   create-vpc-with-tf:

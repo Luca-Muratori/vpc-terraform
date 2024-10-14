@@ -8,15 +8,15 @@
    - Define the VPC resource
    - Specify CIDR block for the VPC
    - Enable DNS hostnames and DNS support
-
+//------------------------
 3. Availability Zones
    - Retrieve information about available AZs in the region
    - Select two AZs for the project
 
 4. Subnet Creation
-   - Create 6 subnets (3 per AZ):
-     - 2 public subnets (1 per AZ)
-     - 4 private subnets (2 per AZ)
+   - Create 3 subnets (1 per AZ):
+     - 1 public subnets 
+     - 2 private subnets 
    - Assign CIDR blocks to each subnet
    - Associate subnets with their respective AZs
 
@@ -108,4 +108,6 @@ DONE:
 -done point 2 'VPC Configuration'
 -make that if the github action to create the vpc is launched, now thanks to an if statement
     it won't rerun again all the jobs for the creations, make it less resources demanding and fast
+-modularized the different services, now the vpc creation will be triggered only if there is no vpc
+    in aws
 
