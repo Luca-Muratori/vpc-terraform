@@ -18,15 +18,3 @@ variable "subnet_cidr" {
     },
   ]
 }
-
-data "aws_vpc" "tf-vpc-project" {
-  filter {
-    name   = "tag:Name"
-    values = ["tf-vpc-project"]
-  }
-}
-
-variable "vpc_id" {
-  type    = string
-  default = data.aws_vpc.tf-vpc-project.id
-}
