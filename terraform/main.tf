@@ -6,7 +6,7 @@ provider "aws" {
 module "vpc" {
   source = "./modules/vpc"
 }
-//-----
+
 
 //Point 4 - subnet creation
 module "subnets" {

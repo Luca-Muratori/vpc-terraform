@@ -1,7 +1,9 @@
 variable "subnet_cidr" {
   type = list(object({
     name = string,
-    cidr = string
+    cidr = string,
+    az=string,
+    public_ip=bool
   }))
   default = [
     {
