@@ -6,15 +6,15 @@ variable "subnet_cidr" {
   default = [
     {
       name = "Public1A",
-      cidr = "10.0.0.1/24"
+      cidr = "10.0.0.0/24"
     },
     {
       name = "Private2A",
-      cidr = "10.0.0.2/24"
+      cidr = "10.0.0.0/24"
     },
     {
       name = "Private3A",
-      cidr = "10.0.0.3/24"
+      cidr = "10.0.0.0/24"
     },
   ]
 }
