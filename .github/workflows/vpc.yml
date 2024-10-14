@@ -4,12 +4,12 @@ on:
   push:
     branches: [main]
     paths:
-      - "terraform/**"
+      - "terraform/modules/vpc/**"
   pull_request: 
     branches:
       - 'main'
     paths:
-      - 'terraform/**'
+      - "terraform/modules/vpc/**"
 
 permissions:
   pull-requests: write
