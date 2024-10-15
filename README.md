@@ -18,22 +18,18 @@
      - 2 private subnets 
    - Assign CIDR blocks to each subnet
    - Associate subnets with their respective AZs
-//------------------------
+
 
 5. Internet Gateway
    - Create an Internet Gateway
    - Attach the Internet Gateway to the VPC
-
-6. NAT Gateways
-   - Create 2 NAT Gateways (1 per AZ)
-   - Allocate Elastic IPs for NAT Gateways
-   - Associate NAT Gateways with public subnets
+//------------------------
 
 7. Route Tables
    - Create a public route table
      - Add a route to the Internet Gateway
    - Create 2 private route tables (1 per AZ)
-     - Add routes to respective NAT Gateways
+    
    - Associate route tables with appropriate subnets
 
 8. Network ACLs
