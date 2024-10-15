@@ -5,7 +5,7 @@ data "aws_vpc" "tf-vpc-project" {
   }
 }
 
-data "aws_internet_gateway" "igw" {
+data "aws_internet_gateway" "main-igw" {
   filter {
     name   = "tag:Name"
     values = ["main-igw"]
@@ -36,7 +36,7 @@ resource "aws_route_table" "public1a" {
 
   route = {
     cidr_block = "0.0.0.0/0"
-    gateway_id = data.aws_internet_gateway.igw.id
+    gateway_id = data.aws_internet_gateway.main-igw.id
   }
 
   tags = {
