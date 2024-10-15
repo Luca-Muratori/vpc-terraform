@@ -17,5 +17,10 @@ module "igw" {
   source = "./modules/igw"
 }
 
+//Point 7 - route tables
+module "route-tables" {
+  source = "./modules/route-tables"
+}
+
 
 
