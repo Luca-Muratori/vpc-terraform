@@ -34,27 +34,28 @@ data "aws_subnet" "private3a" {
 resource "aws_route_table" "public1a" {
   vpc_id = data.aws_vpc.tf-vpc-project.id
 
-  route = {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = data.aws_internet_gateway.main-igw.id
-  }
-
   tags = {
-    Name = "main-route-table"
+    Name = "public-route-table-1"
   }
+}
+
+resource "aws_route" "public_internet_gateway" {
+  route_table_id = aws_route_table.public1a.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id = data.aws_internet_gateway.main-igw.id
 }
 
 resource "aws_route_table" "private2a" {
   vpc_id = data.aws_vpc.tf-vpc-project.id
   tags = {
-    Name = "private-rt-1"
+    Name = "private-route-table-2"
   }
 }
 
 resource "aws_route_table" "private3a" {
   vpc_id = data.aws_vpc.tf-vpc-project.id
   tags = {
-    Name = "private-rt-2"
+    Name = "private-route-table-3"
   }
 }
 
