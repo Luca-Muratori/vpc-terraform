@@ -43,6 +43,7 @@ resource "aws_route" "public_internet_gateway" {
   route_table_id = aws_route_table.public1a.id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id = data.aws_internet_gateway.main-igw.id
+  
 }
 
 resource "aws_route_table" "private2a" {
@@ -61,7 +62,7 @@ resource "aws_route_table" "private3a" {
 
 resource "aws_route_table_association" "public1a" {
   subnet_id      = data.aws_subnet.public1a.id
-  route_table_id = aws_route.public_internet_gateway.id
+  route_table_id = aws_route_table.public1a.id
 }
 
 resource "aws_route_table_association" "private2a" {
