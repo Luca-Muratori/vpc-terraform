@@ -13,5 +13,10 @@ module "subnets" {
   source = "./modules/subnet"
 }
 
+//Point 5 - internet gateway
+module "igw" {
+  source = "./modules/igw"
+}
+
 
 
