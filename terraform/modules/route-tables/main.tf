@@ -21,13 +21,13 @@ data "aws_subnet" "public1a" {
 data "aws_subnet" "private2a" {
   filter {
     name   = "tag:Name"
-    values = ["Public2A"]
+    values = ["Private2A"]
   }
 }
 data "aws_subnet" "private3a" {
   filter {
     name   = "tag:Name"
-    values = ["Public3A"]
+    values = ["Private3A"]
   }
 }
 
@@ -61,15 +61,15 @@ resource "aws_route_table" "private3a" {
 
 resource "aws_route_table_association" "public1a" {
   subnet_id      = data.aws_subnet.public1a.id
-  route_table_id = aws_route_table.public1a
+  route_table_id = aws_route_table.public_internet_gateway.id
 }
 
 resource "aws_route_table_association" "private2a" {
   subnet_id      = data.aws_subnet.private2a.id
-  route_table_id = aws_route_table.private2a
+  route_table_id = aws_route_table.private2a.id
 }
 
 resource "aws_route_table_association" "private3a" {
   subnet_id      = data.aws_subnet.private3a.id
-  route_table_id = aws_route_table.private3a
+  route_table_id = aws_route_table.private3a.id
 }
