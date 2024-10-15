@@ -36,7 +36,7 @@ resource "aws_route_table" "public1a" {
 
   route = {
     cidr_block = "0.0.0.0/0"
-    gateway_id = data.aws_internet_gateway.igw.vpc_id
+    gateway_id = data.aws_internet_gateway.igw.id
   }
 
   tags = {
@@ -64,11 +64,11 @@ resource "aws_route_table_association" "public1a" {
 }
 
 resource "aws_route_table_association" "private2a" {
-  subnet_id      = data.aws_subnet.public2a.id
+  subnet_id      = data.aws_subnet.private2a.id
   route_table_id = aws_route_table.private2a
 }
 
 resource "aws_route_table_association" "private3a" {
-  subnet_id      = data.aws_subnet.public3a.id
-  route_table_id = aws_route_table.privat3a
+  subnet_id      = data.aws_subnet.private3a.id
+  route_table_id = aws_route_table.private3a
 }
