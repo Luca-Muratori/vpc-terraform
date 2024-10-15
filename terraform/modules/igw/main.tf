@@ -4,7 +4,7 @@ data "aws_vpc" "tf-vpc-project" {
     values = ["tf-vpc-project"]
   }
 }
-
+//-creating the internet gateway
 resource "aws_internet_gateway" "igw" {
   vpc_id = data.aws_vpc.tf-vpc-project.id
   tags = {
