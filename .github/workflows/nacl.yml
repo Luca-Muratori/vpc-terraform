@@ -1,0 +1,42 @@
+name: create nacls
+
+on:
+    push:
+        branches: [main]
+        paths:
+            - "terraform/modules/nacl/**"
+permissions:
+    pull-requests: write
+    contents: read
+jobs:
+    add-nacl-connections:
+        runs-on: ubuntu-latest
+        defaults:
+            run:
+                shell: bash
+                working-directory: ./terraform
+        steps:
+            - name: set up github credentials
+              uses: actions/checkout@v3
+            - name: setup terraform
+              uses: hashicorp/setup-terraform@v3
+              with: 
+                terraform_version: latest
+                terraform_wrapper: false
+            - name: configure aws credentials
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+                aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+                aws-region: eu-central-1
+            - name: terraform init
+              run: terraform init
+            - name: terraform validate
+              run: terraform validate
+            - name: terraform plan
+              run: terraform plan -input=false
+            - name: terraform apply
+              run: terraform apply -var-file="tf.tfvars" -auto-approve -input=false 
+            
+
+        

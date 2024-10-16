@@ -28,6 +28,7 @@ data "aws_subnet" "private3a" {
 variable "my_ip" {
   sensitive = true
   type = string
+  description = "my ip"
 }
 
 resource "aws_network_acl" "public1a" {
