@@ -38,7 +38,7 @@ resource "aws_network_acl" "public1a" {
     protocol="tcp"
     rule_no=100
     action="allow"
-    cidr_block = "${data.external.my_ip}"
+    cidr_block = data.external.my_ip
     from_port=22
     to_port=22
   }
