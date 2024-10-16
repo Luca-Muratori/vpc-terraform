@@ -5,6 +5,7 @@ on:
         branches: [main]
         paths:
             - "terraform/modules/nacl/**"
+            
 permissions:
     pull-requests: write
     contents: read
@@ -35,6 +36,10 @@ jobs:
               run: terraform validate
             - name: terraform plan
               run: terraform plan -input=false
+            - name: where are we?
+              run: | 
+                pwd
+                ls -l
             - name: terraform apply
               run: terraform apply -var-file="tf.tfvars" -auto-approve -input=false 
             

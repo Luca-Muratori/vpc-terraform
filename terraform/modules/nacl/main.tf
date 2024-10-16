@@ -58,7 +58,6 @@ resource "aws_network_acl" "public1a" {
   }
 }
 
-
 resource "aws_network_acl" "private2a" {
   vpc_id = data.aws_vpc.tf-vpc-project.id
   subnet_ids = [ data.aws_subnet.private2a.id ]
