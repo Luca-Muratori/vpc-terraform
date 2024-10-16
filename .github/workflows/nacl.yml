@@ -5,6 +5,7 @@ on:
         branches: [main]
         paths:
             - "terraform/modules/nacl/**"
+            - "../.github/workflow/nacl.yml"
             
 permissions:
     pull-requests: write
@@ -38,6 +39,9 @@ jobs:
               run: terraform plan -input=false
             - name: where are we?
               run: | 
+                pwd
+                ls -l
+                cd ..
                 pwd
                 ls -l
             - name: terraform apply
