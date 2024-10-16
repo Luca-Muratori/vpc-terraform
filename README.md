@@ -31,10 +31,11 @@
    - Create 2 private route tables (1 per AZ)
     
    - Associate route tables with appropriate subnets
-//------------------------
 8. Network ACLs
    - Create NACLs for each subnet
    - Define inbound and outbound rules for each NACL
+
+//------------------------
 
 9. Security Groups
    - Create security groups for public and private instances
@@ -80,4 +81,6 @@ DONE:
 -modularized the different services, now the vpc creation will be triggered only if there is no vpc
     in aws
 -done creating the route tables and associate them to the subnets
+-created the security groups
+-REAPPLY ALL THE SERVICES
 
