@@ -25,8 +25,12 @@ data "aws_subnet" "private3a" {
   }
 }
 
-data "external" "my_ip" {
-  program = [ "curl", "https://api.ipify.org?format=json" ]
+data "http" "my_ip" {
+  url = "https://api.ipify.org?format=json" 
+}
+
+locals {
+  my_ip=jsondecode(data.external.my_ip.body).ip
 }
 
 
@@ -38,7 +42,7 @@ resource "aws_network_acl" "public1a" {
     protocol="tcp"
     rule_no=100
     action="allow"
-    cidr_block = data.external.my_ip.ip
+    cidr_block ="${local.my_ip}/32"
     from_port=22
     to_port=22
   }
