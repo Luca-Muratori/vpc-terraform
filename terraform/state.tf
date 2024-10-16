@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "tf-state-myvpc-project-12332345"
-    key            = "global/s3/terraform.tfstate"
+    bucket         = "terraform-state-myvpc-project-12332345"
+    key            = "global/s3/tf.tfstate"
     region         = "eu-central-1"
-    dynamodb_table = "terraform-lock-table-1212234"
+    dynamodb_table = "tf-lock-table-1212234"
   }
 }
