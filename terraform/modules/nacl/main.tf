@@ -61,7 +61,7 @@ resource "aws_network_acl" "private2a" {
 
   ingress {
     protocol = "tcp"
-    rule_no = "100"
+    rule_no = 100
     action = "allow"
     cidr_block = data.aws_subnet.public1a.cidr_block
     from_port = 22
@@ -70,7 +70,7 @@ resource "aws_network_acl" "private2a" {
   
   ingress {
     protocol = "tcp"
-    rule_no = "100"
+    rule_no = 110
     action = "allow"
     cidr_block = data.aws_subnet.private3a.cidr_block
     from_port = 22
@@ -78,7 +78,7 @@ resource "aws_network_acl" "private2a" {
   }
   egress {
     protocol = "tcp"
-    rule_no = "100"
+    rule_no = 100
     action = "allow"
     cidr_block = data.aws_subnet.public1a.cidr_block
     from_port = 22
@@ -86,7 +86,7 @@ resource "aws_network_acl" "private2a" {
   }
   egress {
     protocol = "tcp"
-    rule_no = "100"
+    rule_no = 110
     action = "allow"
     cidr_block = data.aws_subnet.private3a.cidr_block
     from_port = 22

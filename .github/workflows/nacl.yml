@@ -36,13 +36,6 @@ jobs:
               run: terraform validate
             - name: terraform plan
               run: terraform plan -input=false
-            - name: where are we?
-              run: | 
-                pwd
-                ls -l
-                cd ..
-                pwd
-                ls -l
             - name: terraform apply
               run: terraform apply -auto-approve -input=false 
             
