@@ -25,10 +25,8 @@ data "aws_subnet" "private3a" {
   }
 }
 
-variable "my_ip" {
-  sensitive = true
-  type = string
-  description = "my ip"
+data "external" "my_ip" {
+  program = [ "curl", "https://api.ipify.org?format=json" ]
 }
 
 resource "aws_network_acl" "public1a" {
@@ -39,7 +37,7 @@ resource "aws_network_acl" "public1a" {
     protocol="tcp"
     rule_no=100
     action="allow"
-    cidr_block = "${var.my_ip}"
+    cidr_block = "${data.external.my_ip}"
     from_port=22
     to_port=22
   }
@@ -48,7 +46,7 @@ resource "aws_network_acl" "public1a" {
    protocol="tcp"
    rule_no = 100
    action = "allow"
-   cidr_block = "${var.my_ip}"
+   cidr_block = "${data.external.my_ip}"
    from_port = 22
    to_port = 22
   }
