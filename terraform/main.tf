@@ -7,7 +7,7 @@ module "vpc" {
   source = "./modules/vpc"
 }
 
-//Point 4 - subnet creation
+/*//Point 4 - subnet creation
 module "subnets" {
   source = "./modules/subnet"
 }
@@ -25,7 +25,7 @@ module "route-tables" {
 //Point 8 - nacls
 module "nacls" {
   source = "./modules/nacl"
-}
+}*/
 
 
 
