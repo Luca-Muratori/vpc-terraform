@@ -5,7 +5,7 @@ on:
         branches: [main]
         paths:
             - "terraform/modules/nacl/**"
-            - "../.github/workflow/nacl.yml"
+            - "../.github/workflows/nacl.yml"
             
 permissions:
     pull-requests: write
