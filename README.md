@@ -23,7 +23,7 @@
 5. Internet Gateway
    - Create an Internet Gateway
    - Attach the Internet Gateway to the VPC
-//------------------------
+
 
 7. Route Tables
    - Create a public route table
@@ -31,7 +31,7 @@
    - Create 2 private route tables (1 per AZ)
     
    - Associate route tables with appropriate subnets
-
+//------------------------
 8. Network ACLs
    - Create NACLs for each subnet
    - Define inbound and outbound rules for each NACL
@@ -79,5 +79,5 @@ DONE:
     it won't rerun again all the jobs for the creations, make it less resources demanding and fast
 -modularized the different services, now the vpc creation will be triggered only if there is no vpc
     in aws
--
+-done creating the route tables and associate them to the subnets
 
