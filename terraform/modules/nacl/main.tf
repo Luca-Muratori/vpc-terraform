@@ -52,7 +52,6 @@ resource "aws_network_acl" "public1a" {
    from_port = 22
    to_port = 22
   }
-
   tags = {
     Name = "publicNACL"
   }
@@ -97,6 +96,10 @@ resource "aws_network_acl" "private2a" {
     from_port = 22
     to_port = 22
   }
+
+  tags = {
+    Name = "private2aNACL"
+  }
 }
 
 resource "aws_network_acl" "private3a" {
@@ -119,5 +122,8 @@ resource "aws_network_acl" "private3a" {
     cidr_block = data.aws_subnet.private2a.cidr_block
     from_port = 22
     to_port = 22
+  }
+  tags = {
+    Name = "private3aNACL"
   }
 }
