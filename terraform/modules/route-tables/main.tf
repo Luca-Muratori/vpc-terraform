@@ -5,6 +5,7 @@ data "aws_vpc" "tf-vpc-project" {
   }
 }
 
+
 data "aws_internet_gateway" "main-igw" {
   filter {
     name   = "tag:Name"

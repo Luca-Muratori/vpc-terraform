@@ -18,12 +18,12 @@ module "igw" {
 }
 
 //Point 7 - route tables
-/*module "route-tables" {
+module "route-tables" {
   source = "./modules/route-tables"
 }
 
 //Point 8 - nacls
-module "nacls" {
+/*module "nacls" {
   source = "./modules/nacl"
 }*/
 
