@@ -7,13 +7,13 @@ module "vpc" {
   source = "./modules/vpc"
 }
 
-/*//Point 4 - subnet creation
+//Point 4 - subnet creation
 module "subnets" {
   source = "./modules/subnet"
 }
 
 //Point 5 - internet gateway
-module "igw" {
+/*module "igw" {
   source = "./modules/igw"
 }
 

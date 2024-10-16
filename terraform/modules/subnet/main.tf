@@ -5,8 +5,8 @@ data "aws_vpc" "tf-vpc-project" {
     values = ["tf-vpc-project"]
   }
 }
-
-resource "aws_subnet" "subnet1" {
+//-sub-1
+resource "aws_subnet" "subnet1-public1a" {
   vpc_id                  = data.aws_vpc.tf-vpc-project.id
   cidr_block              = var.subnet_cidr[0].cidr
   availability_zone       = var.subnet_cidr[0].az
@@ -15,8 +15,8 @@ resource "aws_subnet" "subnet1" {
     Name = var.subnet_cidr[0].name
   }
 }
-
-resource "aws_subnet" "subnet2" {
+//-sub-2
+resource "aws_subnet" "subnet2-private2a" {
   vpc_id                  = data.aws_vpc.tf-vpc-project.id
   cidr_block              = var.subnet_cidr[1].cidr
   availability_zone       = var.subnet_cidr[1].az
@@ -25,8 +25,8 @@ resource "aws_subnet" "subnet2" {
     Name = var.subnet_cidr[1].name
   }
 }
-
-resource "aws_subnet" "subnet3" {
+//-sub-3
+resource "aws_subnet" "subnet3-private3a" {
   vpc_id                  = data.aws_vpc.tf-vpc-project.id
   cidr_block              = var.subnet_cidr[2].cidr
   availability_zone       = var.subnet_cidr[2].az
