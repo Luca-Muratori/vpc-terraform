@@ -29,6 +29,7 @@ data "external" "my_ip" {
   program = [ "curl", "https://api.ipify.org?format=json" ]
 }
 
+
 resource "aws_network_acl" "public1a" {
   vpc_id = data.aws_vpc.tf-vpc-project.id
   subnet_ids = [ data.aws_subnet.public1a.id ]

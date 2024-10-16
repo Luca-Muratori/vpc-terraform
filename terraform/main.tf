@@ -23,9 +23,9 @@ module "route-tables" {
 }
 
 //Point 8 - nacls
-/*module "nacls" {
+module "nacls" {
   source = "./modules/nacl"
-}*/
+}
 
 
 
