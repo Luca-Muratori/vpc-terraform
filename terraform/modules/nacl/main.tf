@@ -30,7 +30,7 @@ data "http" "my_ip" {
 }
 
 locals {
-  my_ip=jsondecode(data.external.my_ip.body).ip
+  my_ip=jsondecode(data.http.my_ip.body).ip
 }
 
 
