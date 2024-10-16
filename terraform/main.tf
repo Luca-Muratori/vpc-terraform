@@ -13,12 +13,12 @@ module "subnets" {
 }
 
 //Point 5 - internet gateway
-/*module "igw" {
+module "igw" {
   source = "./modules/igw"
 }
 
 //Point 7 - route tables
-module "route-tables" {
+/*module "route-tables" {
   source = "./modules/route-tables"
 }
 
