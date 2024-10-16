@@ -76,7 +76,6 @@ resource "aws_network_acl" "private2a" {
     from_port = 22
     to_port = 22
   }
-
   egress {
     protocol = "tcp"
     rule_no = "100"
@@ -85,7 +84,6 @@ resource "aws_network_acl" "private2a" {
     from_port = 22
     to_port = 22
   }
-  
   egress {
     protocol = "tcp"
     rule_no = "100"

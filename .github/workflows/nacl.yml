@@ -44,7 +44,7 @@ jobs:
                 pwd
                 ls -l
             - name: terraform apply
-              run: terraform apply -var-file="tf.tfvars" -auto-approve -input=false 
+              run: terraform apply -auto-approve -input=false 
             
 
         
