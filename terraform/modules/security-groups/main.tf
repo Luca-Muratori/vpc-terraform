@@ -15,7 +15,7 @@ locals {
 
 resource "aws_security_group" "public_1a" {
   name        = "public-sg"
-  description = "security groups for the public 1a subnet"
+  description = "security groups for public 1a subnet"
   vpc_id      = data.aws_vpc.tf-vpc-project.id
 
   ingress {

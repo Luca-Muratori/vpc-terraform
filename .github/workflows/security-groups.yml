@@ -4,7 +4,7 @@ on:
     push:
         branches: ["main"]
         paths: 
-            -"terraform/modules/security-groups/**"
+            - "terraform/modules/security-groups/**"
 #rules for the github actions to do only what it supposed to do
 permissions:
     #create, manage and update the puyll request
