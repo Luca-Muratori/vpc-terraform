@@ -27,5 +27,10 @@ module "nacls" {
   source = "./modules/nacl"
 }
 
+//Point 9 - security groups
+module "security-groups" {
+  source = "./modules/security-groups"
+}
+
 
 

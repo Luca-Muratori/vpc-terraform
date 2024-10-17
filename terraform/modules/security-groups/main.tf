@@ -25,7 +25,7 @@ resource "aws_security_group" "public_1a" {
     cidr_blocks = ["${local.my_ip}/32"]
   }
 
-  #for internet access for this subnet
+  #internet access for this subnet
   egress {
     from_port   = 0
     to_port     = 0
