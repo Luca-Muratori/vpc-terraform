@@ -14,7 +14,7 @@ locals {
 }
 
 resource "aws_security_group" "public_1a" {
-  name        = "public-sg"
+  name        = "public_1a-sg-ssh"
   description = "security groups for public 1a subnet"
   vpc_id      = data.aws_vpc.tf-vpc-project.id
 
@@ -34,12 +34,12 @@ resource "aws_security_group" "public_1a" {
   }
 
   tags = {
-    Name = "public-sg-ssh"
+    Name = "public_1a-sg-ssh"
   }
 }
 
 resource "aws_security_group" "private_2a" {
-  name        = "private-sg-1"
+  name        = "private_2a-sg-ssh"
   description = "security groups for subnet 2 private"
   vpc_id      = data.aws_vpc.tf-vpc-project.id
 
@@ -51,12 +51,12 @@ resource "aws_security_group" "private_2a" {
   }
 
   tags = {
-    Name = "private-sg-1-ssh"
+    Name = "private_2a-sg-ssh"
   }
 }
 
 resource "aws_security_group" "private_3a" {
-  name        = "private-sg-2"
+  name        = "private_3a-sg-ssh"
   description = "security group for subnet 3 private"
   vpc_id      = data.aws_vpc.tf-vpc-project.id
 
@@ -68,6 +68,6 @@ resource "aws_security_group" "private_3a" {
   }
 
   tags = {
-    Name = "private-sg-2-ssh"
+    Name = "private_3a-sg-ssh"
   }
 }
