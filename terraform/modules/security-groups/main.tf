@@ -47,7 +47,7 @@ resource "aws_security_group" "private_2a" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    security_groups = [aws_security_group.public.id]
+    security_groups = [aws_security_group.public1a.id]
   }
 
   tags = {
