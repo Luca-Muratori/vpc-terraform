@@ -66,4 +66,8 @@ resource "aws_security_group" "private_3a" {
     protocol        = "tcp"
     security_groups = [aws_security_group.private_2a.id]
   }
+
+  tags = {
+    Name = "private-sg-2-ssh"
+  }
 }
