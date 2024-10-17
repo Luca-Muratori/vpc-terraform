@@ -1,0 +1,41 @@
+name: create security groups
+
+on:
+    push:
+        branches: ["main"]
+        paths: 
+            -"terraform/modules/security-groups/**"
+#rules for the github actions to do only what it supposed to do
+permissions:
+    #create, manage and update the puyll request
+    pull-requests: write
+    #the workflow can only check the code, read files and acces repositoy data
+    contents: read
+jobs:
+    create-security-groups:
+        runs-on: ubuntu-latest
+        defaults: 
+            run:
+                shell: bash
+                working-directory: ./terraform
+        steps:
+            - name: set up git hub credentials
+              uses: actions/checkout@v3
+            - name: set up terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: latest
+                #in this case tf will run the commands in a customized way
+                terraform_wrapper: false
+            - name: set up aws credentials
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+                aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+                aws-region: "eu-central-1"
+            - name: run terraform init
+              run: terraform init
+            - name: run terraform validate
+              run: terraform validate
+            - name: run terraform apply
+              run: terraform apply -input=false -auto-approve

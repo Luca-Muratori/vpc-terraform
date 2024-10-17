@@ -81,6 +81,8 @@ DONE:
 -modularized the different services, now the vpc creation will be triggered only if there is no vpc
     in aws
 -done creating the route tables and associate them to the subnets
--created the security groups
--REAPPLY ALL THE SERVICES
+-created the nacls
+
+
+
 
