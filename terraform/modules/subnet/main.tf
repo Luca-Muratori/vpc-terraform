@@ -11,6 +11,7 @@ resource "aws_subnet" "subnet1-public1a" {
   cidr_block              = var.subnet_cidr[0].cidr
   availability_zone       = var.subnet_cidr[0].az
   map_public_ip_on_launch = var.subnet_cidr[0].public_ip
+  
   tags = {
     Name = var.subnet_cidr[0].name
   }

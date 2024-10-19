@@ -35,18 +35,17 @@
    - Create NACLs for each subnet
    - Define inbound and outbound rules for each NACL
 
-//------------------------
+
 
 9. Security Groups
    - Create security groups for public and private instances
    - Define inbound and outbound rules for each security group
-
+//------------------------
 10. EC2 Instances
-    - Define EC2 instance resources (6 total)
+    - Define EC2 instance resources (3 total)
     - Assign instances to their respective subnets
     - Associate security groups with instances
-    - Configure public instances with Elastic IPs
-    - Set up user data for SSH key distribution (for private instance access)
+    - Configure public instances with Elastic IPs (no need since I'm using a public subnet and a igw, but needed in case I want a static ip)
 
 11. SSH Key Pair
     - Generate an SSH key pair
@@ -82,6 +81,9 @@ DONE:
     in aws
 -done creating the route tables and associate them to the subnets
 -created the nacls
+-created the security groups
+-created the key:pair for ssh
+
 
 
 
