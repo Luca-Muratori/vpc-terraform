@@ -16,6 +16,12 @@ jobs:
         shell: bash
         working-directory: terraform
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: List repository contents
+        run: ls -R
+        working-directory: ${{ github.workspace }}
       - name: test
         run: echo 'Helloo worflow'
       - name: setup github
