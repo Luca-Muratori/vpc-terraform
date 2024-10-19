@@ -39,7 +39,7 @@ data "aws_security_group" "private_3a" {
     values = ["private_3a-sg-ssh"]
   }
 }
-
+//
 resource "aws_instance" "public1a" {
   ami = var.ami
   instance_type = "t2.micro"
