@@ -32,5 +32,10 @@ module "security-groups" {
   source = "./modules/security-groups"
 }
 
+//Point 10 - ec2 instances
+module "ec2" {
+  source = "./modules/ec2"
+}
+
 
 
