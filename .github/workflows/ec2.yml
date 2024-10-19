@@ -5,7 +5,6 @@ on:
         branches: [main]
         paths: 
             - "terraform/modules/ec2/**"
-            - ".github/workflows/ec2.yml"
 permissions:
     pull-requests: write
     contents: read
@@ -18,7 +17,7 @@ jobs:
                 working-directory: ./terraform
         steps:
             - name: test
-              run: echo >> 'Helloo worflow'
+              run: echo 'Helloo worflow'
             - name: setup github
               uses: actions/checkout@v3
             - name: setup terraform
@@ -33,10 +32,10 @@ jobs:
                 aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
                 aws-region: 'eu-central-1'
             - name: run init
-              uses: terraform init
+              run: terraform init
             - name: run validate
-              uses: terraform validate
+              run: terraform validate
             - name: run plan
-              uses: terraform plan
+              run: terraform plan
             - name: run apply
-              uses: terraform apply -input=false auto-approve
+              run: terraform apply auto-approve
