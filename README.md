@@ -1,89 +1,23 @@
-# vpc-terraform
-1. Project Setup
-   - Create a new GitHub repository
-   - Initialize a local Git repository
-   - Create a basic project structure for Terraform files
+# Three-Tier AWS Architecture with Terraform and GitHub Actions
 
-2. VPC Configuration
-   - Define the VPC resource
-   - Specify CIDR block for the VPC
-   - Enable DNS hostnames and DNS support
-3. Availability Zones
-   - Retrieve information about available AZs in the region
-   - Select two AZs for the project
-
-4. Subnet Creation
-   - Create 3 subnets (1 per AZ):
-     - 1 public subnets 
-     - 2 private subnets 
-   - Assign CIDR blocks to each subnet
-   - Associate subnets with their respective AZs
+Project Overview
+This project implements a secure three-tier architecture in AWS using Terraform as Infrastructure as Code (IaC) and GitHub Actions for CI/CD pipeline automation. The architecture consists of one VPC with three subnets (1 public, 2 private), each containing an EC2 instance with specific security configurations.
+In the public subnet we will have the only EC2 instance with public access, via ssh and key pairs, while the other 2 private instances are accessible only from the public ec2.
 
 
-5. Internet Gateway
-   - Create an Internet Gateway
-   - Attach the Internet Gateway to the VPC
+Architecture Components
+- 1 VPC
+- 3 Subnets (1 Public, 2 Private)
+- 3 Network ACLs (one per subnet)
+- 3 Security Groups (one per subnet)
+- 3 Route Tables (one per subnet)
+- 3 EC2 instances (one per subnet)
+- SSH access configuration
+- Key pair authentication
 
+Below the architecture diagram
 
-7. Route Tables
-   - Create a public route table
-     - Add a route to the Internet Gateway
-   - Create 2 private route tables (1 per AZ)
-    
-   - Associate route tables with appropriate subnets
-8. Network ACLs
-   - Create NACLs for each subnet
-   - Define inbound and outbound rules for each NACL
-
-
-
-9. Security Groups
-   - Create security groups for public and private instances
-   - Define inbound and outbound rules for each security group
-//------------------------
-10. EC2 Instances
-    - Define EC2 instance resources (3 total)
-    - Assign instances to their respective subnets
-    - Associate security groups with instances
-    - Configure public instances with Elastic IPs (no need since I'm using a public subnet and a igw, but needed in case I want a static ip)
-
-11. SSH Key Pair
-    - Generate an SSH key pair
-    - Add the public key to AWS Key Pairs
-
-17. Documentation
-    - Create a README.md file
-    - Document project structure, requirements, and usage instructions
-
-18. Testing
-    - Develop a testing strategy (e.g., using Terratest)
-    - Implement basic tests for infrastructure validation
-
-19. Continuous Integration
-    - Configure GitHub Actions to run tests on pull requests
-    - Set up linting for Terraform files (e.g., using tflint)
-
-22. Cleanup
-    - Create a separate workflow for destroying resources
-    - Implement safeguards to prevent accidental destruction
-
-23. Version Control
-    - Create a .gitignore file for Terraform-specific files
-    - Commit and push your code to GitHub
-
-DONE:
--created a tf state file, in order to store the configuration on a remote backend S3
--create modules in order to have each service in a separate subdirectory
--done point 2 'VPC Configuration'
--make that if the github action to create the vpc is launched, now thanks to an if statement
-    it won't rerun again all the jobs for the creations, make it less resources demanding and fast
--modularized the different services, now the vpc creation will be triggered only if there is no vpc
-    in aws
--done creating the route tables and associate them to the subnets
--created the nacls
--created the security groups
--created the key:pair for ssh
-
+[text](tierarchdrawio.drawio)
 
 
 
