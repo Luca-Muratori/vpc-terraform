@@ -17,7 +17,7 @@ Architecture Components
 
 Below the architecture diagram
 
-[text](tierarchdrawio.drawio)
+![alt text](tierarchdrawio.drawio.png)
 
 
 
